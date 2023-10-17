@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %} Blogs {% endblock %}
+{% block homeactive %} active {% endblock homeactive %}
+
+
+{% block body %}
+
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section style="margin-top:200px;" class=" ">
+  <div class="container mt-5">
+
+    <h2 class="title-page">Search Result</h2>
+
+    <h2 class="title-page">Our Blogs</h2>
+  </div>
+  <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-3">
+        <div class="card">
+          <article class="filter-group">
+            <header class="card-header">
+              <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                <i class="icon-control fa fa-chevron-down"></i>
+                <h6 class="title">Categories</h6>
+              </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_1" style="">
+              <div class="card-body">
+                <ul class="list-menu">
+                  <li><a href="#">All Blogs </a></li>
+                  
+                  <li>
+                    <a href="#">Category
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+              <!-- card-body.// -->
+            </div>
+          </article>
+        </div>
+        <!-- card.// -->
+      </aside>
+      <main class="col-md-9">
+        <header class="border-bottom mb-4 pb-3">
+          <div class="form-inline">
+            <span class="mr-md-auto"><b>0</b> blog found
+            </span>
+          </div>
+        </header>
+        
+        <div style=" " class="row mx-auto justify-content-center">
+          {% if posts %} 
+          {% for blog in posts %}
+            <div style="max-width:300px; " class="col-lg-4  m-2">
+              <figure class="card card-product-grid">
+                <div class="img-wrap">
+                  <a href="#"><img style="max-width:300px; height:350px; object-fit:cover;" src="{{ blog.image.url }}" /></a>
+                </div>
+                <!-- img-wrap.// -->
+                <figcaption class="info-wrap">
+                  <div class="fix-height">
+                    <a href="/" class="title">{{blog.blog_name}}</a>
+                  </div>
+                  <a style="background-color: #22806d;" href="{% url 'blog_details' blog_id=blog.id %}" class="btn btn-block ">Blog Details </a>
+                  <a style="background-color: #22806d;" href="{% url 'save_favorite' blog_id=blog.id %}" class="btn btn-block ">Favorite </a>
+                </figcaption>
+              </figure>
+            </div>
+          <!-- col.// -->
+          {% endfor %} 
+          {% else %}
+          <div>
+            <h2>No result found. Please try again.</h2>
+          </div>
+          {% endif %}
+        </div>
+
+{% block js %} 
+<script></script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="container" >
+    <div class="row">
+        <div class="col-12">
+            <h1>Favorites List</h1>
+        </div>
+    </div>
+
+    {% if favorite_posts %}
+        <div class="row" style="margin-top: 100px;">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Content</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in favorite_posts %}
+                            <tr>
+                                <td>{{ post.blog.title }}</td>
+                                <td>{{ post.blog.author }}</td>
+                                <td>{{ post.blog.content}}</td>
+                                <td>
+                                    <a href="{% url 'blog_details' blog_id=post.blog.id %}">
+                                        <button class="btn btn-danger">Read More</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_from_fv' blog_id=post.id %}">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">
+                <p>You haven't added any blog posts to your favorites yet.</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

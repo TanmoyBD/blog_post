@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Blogs {% endblock %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block body %}
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ blog.image.url }}"  alt="blog Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ blog.title }}</h2>
+                <p>{{ blog.content }}</p>
+                <p>Created At {{ blog.dateTime }}</p>
+                <h3>Average Rating {{ average_rating }}</h3>
+                <form style="margin-top: 20px;" method="post">
+                    {% csrf_token %}
+                    {{ rating_form }}
+                    <button type="submit">Submit Rating</button>
+                </form>
+
+                <form style="margin-top: 20px;" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ comment_form.comment.label_tag }}
+                        <textarea class="form-control" id="id_comment" name="comment" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Comment</button>
+                </form>
+
+                <div>
+                    {% if comments %}
+                        {% for comment in comments %}
+                            <div style="border: 1px solid #ccc; background-color: #f9f9f9; padding: 10px; margin-bottom: 10px;">
+                                <p style="font-weight: bold; margin-bottom: 5px;">Name: {{ comment.user.username }}</p>
+                                <h3>{{ comment.comment }}</h3>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                    <p>𝐍𝐨 𝐂𝐨𝐦𝐦𝐞𝐧𝐭𝐬 𝐲𝐭</p>
+                    {% endif %}
+
+                </div>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
