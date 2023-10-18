@@ -15,7 +15,7 @@
   <body>      
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-          <a style="text-align:center;width: 40%;margin: auto;" class="btn btn-outline-warning me-4" href="#"><h2>Radiant_Journey Blogs</h2></a>
+          <a style="text-align:center;width: 40%;margin: auto;" class="btn btn-outline-warning me-4" href="#"><h3>𝑹𝒂𝒅𝒊𝒂𝒏𝒕_𝑱𝒐𝒖𝒓𝒏𝒆𝒚 𝑩𝒍𝒐𝒈𝒔</h3></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,37 +23,37 @@
           <div class="container mx-3">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="btn btn-primary me-2" aria-current="page" href="/">Home</a>
+                <a class="btn btn-primary me-2" aria-current="page" href="/">𝐇𝐨𝐦𝐞</a>
               </li>
               {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="btn btn-secondary me-2 " href="/add_blogs/">Add Blogs</a>
+                <a class="btn btn-secondary me-2 " href="/add_blogs/">𝐀𝐝𝐝 𝐁𝐥𝐨𝐠𝐬</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-info me-2" href="#">Hello {{request.user}}</a>
+                <a class="btn btn-info me-2" href="#">𝐇𝐞𝐥𝐥𝐨 {{request.user}}</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-success me-2" href="/profile/">Profile</a>
+                <a class="btn btn-success me-2" href="/profile/">𝐏𝐫𝐨𝐟𝐢𝐥𝐞</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-success me-2" href="/favorite/">favorite</a>
+                <a class="btn btn-success me-2" href="/favorite/">𝐟𝐚𝐯𝐨𝐫𝐢𝐭𝐞</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-danger"href="/logout/">Logout</a>
+                <a class="btn btn-danger"href="/logout/">𝐋𝐨𝐠𝐨𝐮𝐭</a>
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link {% block registeractive %} {% endblock registeractive %}" href="/register/">Register</a>
+                <a class="nav-link {% block registeractive %} {% endblock registeractive %}" href="/register/">𝐑𝐞𝐠𝐢𝐬𝐭𝐞𝐫</a>
               </li>
                <li class="nav-item">
-                <a class="nav-link {% block loginactive %} {% endblock loginactive %}" href="/login/">Login</a>
+                <a class="nav-link {% block loginactive %} {% endblock loginactive %}" href="/login/">𝐋𝐨𝐠𝐢𝐧</a>
               </li>
               {% endif %}
             </ul>
             </div>
             <form class="d-flex" method="POST" action="/search/"> {% csrf_token %}
               <input class="form-control me-2" type="search" placeholder="Search" name="searched" id="searched" aria-label="Search">
-              <button href="/search/" class="btn btn-primary" type="submit">Search</button>
+              <button href="/search/" class="btn btn-primary" type="submit">𝐒𝐞𝐚𝐫𝐜𝐡</button>
             </form>
           </div>
         </div>

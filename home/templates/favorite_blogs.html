@@ -4,12 +4,12 @@
 <div class="container" >
     <div class="row">
         <div class="col-12">
-            <h1>Favorites List</h1>
+            <h1>𝐅𝐚𝐯𝐨𝐫𝐢𝐭𝐞𝐬 𝐋𝐢𝐬𝐭</h1>
         </div>
     </div>
 
     {% if favorite_posts %}
-        <div class="row" style="margin-top: 100px;">
+        <div class="row" style="margin-top: 25px;">
             <div class="col-12">
                 <table class="table table-striped">
                     <thead>
@@ -28,12 +28,12 @@
                                 <td>{{ post.blog.content}}</td>
                                 <td>
                                     <a href="{% url 'blog_details' blog_id=post.blog.id %}">
-                                        <button class="btn btn-danger">Read More</button>
+                                        <button class="btn btn-outline-warning">Read More</button>
                                     </a>
                                 </td>
                                 <td>
                                     <a href="{% url 'delete_from_fv' blog_id=post.id %}">
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-outline-danger">Delete</button>
                                     </a>
                                 </td>
                             </tr>

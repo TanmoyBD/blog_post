@@ -33,7 +33,7 @@ class BlogPost(models.Model):
     category=models.ForeignKey(Category,on_delete=models.CASCADE) 
     
     def __str__(self):
-        return str(self.author) +  " Blog Title: " + self.title
+        return str(self.author) +  " Blog Title: " + self.title 
     
     def get_absolute_url(self):
         return reverse('blogs')

@@ -85,7 +85,6 @@ def add_blogs(request):
     if request.method == 'POST':
         form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
-            # Save the form but commit=False to set the category later
             blog_post = form.save(commit=False)
             category = form.cleaned_data['category']
             slug = form.cleaned_data['slug']
@@ -94,10 +93,11 @@ def add_blogs(request):
             blog_post.slug = slug
             
             blog_post.save()
-            return redirect('blog')  # Replace 'success_page' with the actual URL name for the success page
+            return redirect('blog')  
     else:
         form = BlogPostForm()
     return render(request, 'add_blogs.html', {'form': form})
+
 
 class UpdatePostView(UpdateView):
     model = BlogPost

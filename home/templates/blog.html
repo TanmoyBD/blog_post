@@ -8,11 +8,11 @@
 
 
 <!-- ========================= SECTION PAGETOP ========================= -->
-<section style="margin-top:200px;" class=" ">
+<section style="margin-top:10px;" class=" ">
   <div class="container mt-5">
 
 
-    <h2 class="title-page">Our Blogs</h2>
+    <h2 class="title-page"></h2>
   </div>
   <!-- container //  -->
 </section>
@@ -22,25 +22,23 @@
 <section class="section-content padding-y">
   <div class="container">
     <div class="row">
-      <aside class="col-md-3">
+      <aside class="col-md-2">
         <div class="card">
           <article class="filter-group">
             <header class="card-header">
               <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
                 <i class="icon-control fa fa-chevron-down"></i>
-                <h6 class="title">Categories</h6>
+                <h6 class="title">𝑪𝒂𝒕𝒆𝒈𝒐𝒓𝒊𝒆𝒔</h6> 
               </a>
             </header>
             <div class="filter-content collapse show" id="collapse_1" style="">
               <div class="card-body">
                 <ul class="list-menu">
-                  <li><a href="#">All Blogs </a></li>
+                  <li><a href="#">𝑨𝒍𝒍 𝑩𝒍𝒐𝒈𝒔 </a></li>
                   
                   <li>
-                    <a href="#">Category
-                    </a>
+                    <a href="#">𝑪𝒂𝒕𝒆𝒈𝒐𝒓𝒚</a>
                   </li>
-                  
                 </ul>
               </div>
               <!-- card-body.// -->
@@ -52,8 +50,7 @@
       <main class="col-md-9">
         <header class="border-bottom mb-4 pb-3">
           <div class="form-inline">
-            <span class="mr-md-auto"><b>0</b> blog found
-            </span>
+            <span class="mr-md-auto"><b></b> <h3>🅾🆄🆁 🅱🅻🅾🅶🆂</h3></span>
           </div>
         </header>
         
@@ -70,8 +67,9 @@
                   <div class="fix-height">
                     <a href="/" class="title">{{blog.blog_name}}</a>
                   </div>
-                  <a style="background-color: #22806d;" href="{% url 'blog_details' blog_id=blog.id %}" class="btn btn-block ">Blog Details </a>
-                  <a style="background-color: #22806d;" href="{% url 'save_favorite' blog_id=blog.id %}" class="btn btn-block ">Favorite </a>
+                  <a class="btn btn-outline-danger btn-block" href="{% url 'blog_details' blog_id=blog.id %}">𝐁𝐥𝐨𝐠 𝐃𝐞𝐭𝐚𝐢𝐥𝐬</a>
+                  <a class="btn btn-outline-warning btn-block" href="{% url 'save_favorite' blog_id=blog.id %}">𝐅𝐚𝐯𝐨𝐫𝐢𝐭𝐞</a>
+                  
                 </figcaption>
               </figure>
             </div>
