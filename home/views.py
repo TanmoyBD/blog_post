@@ -87,8 +87,6 @@ def add_blogs(request):
         if form.is_valid():
             # Save the form but commit=False to set the category later
             blog_post = form.save(commit=False)
-            
-            # Set the category directly from the form
             category = form.cleaned_data['category']
             slug = form.cleaned_data['slug']
             blog_post.category = category

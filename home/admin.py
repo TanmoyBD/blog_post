@@ -11,6 +11,8 @@ class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields={'slug':('title',)}
     list_display=['title','slug']
     
+    
+    
 
 admin.site.register(BlogPost,BlogAdmin)
 admin.site.register(Category,CategoryAdmin)    
