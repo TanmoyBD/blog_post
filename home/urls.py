@@ -11,10 +11,12 @@ urlpatterns = [
     path('delete_blog_post/<int:blog_id>/', views.Delete_Blog_Post, name='delete_blog_post'),
     path('delete_from_fv/<int:blog_id>/', views.delete_from_fv, name='delete_from_fv'),
     path('save-favorite/<int:blog_id>/', views.save_favorite, name='save_favorite'),
-    path('blog/', views.blogs, name='blog'),  # Hiting here
+    path('cat_wise_blog/<slug:slug>/', views.blogs, name='cat_wise_blog'),  # Hiting here
     path('favorite/', views.favorite_blogs, name='favorite_blogs'),
     path('blog_details/<int:blog_id>/',views.blog_details,name='blog_details'),
     path("search/", views.search, name="search"),
+    path("delete/<int:blog_id>/", views.Delete_Blog_Post, name="delete"),
+    path("edit/<int:blog_id>/", views.edit_blog, name="edit_blog"),
 
     
 #     profile

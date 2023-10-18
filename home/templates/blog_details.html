@@ -20,6 +20,9 @@
                     <button type="submit">Submit Rating</button>
                 </form>
 
+                <a class="btn btn-outline-danger btn-block" href="{% url 'edit_blog' blog_id=blog.id %}">Edit</a>
+                <a class="btn btn-outline-danger btn-block" href="{% url 'delete' blog_id=blog.id %}">Delete</a>
+
                 <form style="margin-top: 20px;" method="post">
                     {% csrf_token %}
                     <div class="form-group">

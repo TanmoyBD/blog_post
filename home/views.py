@@ -9,16 +9,28 @@ from .forms import ProfileForm, BlogPostForm
 from django.views.generic import UpdateView
 from django.contrib import messages
 from .forms import RatingForm,CommentForm
+from .forms import EditBlogPostForm
 
 
-def blogs(request):
+def blogs(request, slug=None):
+    categories = None
+    posts = BlogPost.objects.all().order_by('-dateTime')
+    print("In blogs")
     if not request.user.is_authenticated:
         return redirect('login')
-    posts = BlogPost.objects.all()
-    posts = BlogPost.objects.filter().order_by('-dateTime')
+    if slug:
+        categories = get_object_or_404(Category, slug=slug)
+        posts = posts.filter(category=categories).order_by('-dateTime')
+        print(posts)
+    
+    categories = Category.objects.all()
     favorite_blogs = Favorite.objects.filter(user=request.user).values_list('blog', flat=True)
     
-    return render(request, "blog.html", {'posts': posts, 'favorite_blogs': favorite_blogs})
+    return render(request, "blog.html", {'posts': posts,
+                                         'favorite_blogs': favorite_blogs,
+                                         'categories': categories
+                                         })
+
 
 def blog_details(request, blog_id):
     blog = get_object_or_404(BlogPost, pk=blog_id)
@@ -62,13 +74,7 @@ def blog_details(request, blog_id):
         'comments':comments,
     })
 
-def Delete_Blog_Post(request, blog_id):
-    
 
-    posts = BlogPost.objects.get(id=blog_id)
-    print(posts)
-    posts.delete()
-    return redirect('favorite_blogs')
 
 
 
@@ -191,3 +197,29 @@ def delete_from_fv(request,blog_id):
     print(posts)
     posts.delete()
     return redirect('favorite_blogs')
+
+
+def Delete_Blog_Post(request, blog_id):
+    posts = BlogPost.objects.get(id=blog_id)
+    posts.delete()
+    return redirect('blog')
+
+
+from django.shortcuts import render, get_object_or_404
+from .forms import BlogPostForm
+from .models import BlogPost
+
+def edit_blog(request, blog_id):
+    blog = get_object_or_404(BlogPost, pk=blog_id)
+
+    if request.method == 'POST':
+        form = EditBlogPostForm(request.POST, request.FILES, instance=blog)
+        if form.is_valid():
+            if not request.FILES.get('image'):
+                form.instance.image = blog.image
+            form.save()
+            return redirect('blog_details', blog_id=blog_id)
+    else:
+        form = EditBlogPostForm(instance=blog)
+
+    return render(request, 'edit_blog_post.html', {'form': form})

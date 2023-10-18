@@ -34,12 +34,14 @@
             <div class="filter-content collapse show" id="collapse_1" style="">
               <div class="card-body">
                 <ul class="list-menu">
-                  <li><a href="#">𝑨𝒍𝒍 𝑩𝒍𝒐𝒈𝒔 </a></li>
-                  
-                  <li>
-                    <a href="#">𝑪𝒂𝒕𝒆𝒈𝒐𝒓𝒚</a>
-                  </li>
-                </ul>
+                  <li><a href="{% url 'blogs' %}">𝑨𝒍𝒍 𝑩𝒍𝒐𝒈𝒔 </a></li>
+                  {% for cat in categories %}
+                      <li>
+                          <a href="{% url 'cat_wise_blog' slug=cat.slug %}">{{cat.category_name}}</a>
+                      </li>
+                  {% endfor %}
+              </ul>
+              
               </div>
               <!-- card-body.// -->
             </div>
@@ -65,7 +67,7 @@
                 <!-- img-wrap.// -->
                 <figcaption class="info-wrap">
                   <div class="fix-height">
-                    <a href="/" class="title">{{blog.blog_name}}</a>
+                    <a href="{% url 'blog_details' blog_id=blog.id %}" class="title">{{blog.title}}</a>
                   </div>
                   <a class="btn btn-outline-danger btn-block" href="{% url 'blog_details' blog_id=blog.id %}">𝐁𝐥𝐨𝐠 𝐃𝐞𝐭𝐚𝐢𝐥𝐬</a>
                   <a class="btn btn-outline-warning btn-block" href="{% url 'save_favorite' blog_id=blog.id %}">𝐅𝐚𝐯𝐨𝐫𝐢𝐭𝐞</a>
